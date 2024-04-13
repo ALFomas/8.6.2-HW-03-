@@ -1,0 +1,21 @@
+{% extends 'flatpages/default.html' %}
+
+{% block content %}
+<h2>newspaper</h2>
+<h4>news / articles</h4>
+<div> Привет, {{request.user.username}} !</div>
+
+{% if is_not_authors %}
+<button><a href="/upgrade"> Хочу стать автором!</a></button>
+{% else %}
+<div> Вы являетесь автором </div>
+{% endif %}
+
+<div>____________________________________</div>
+
+<form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Log out</button>
+</form>
+
+{% endblock %}
